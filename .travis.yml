@@ -1,5 +1,3 @@
-sudo: required
-
 language: generic
 
 services:
@@ -22,7 +20,6 @@ deploy:
   on:
     branch: master
   role: $AWS_ROLE
-
-access_key_id: $AWS_ACCESS_KEY
-secret_access_key:
-  secure: $AWS_SECURE_KEY
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key:
+    secure: $AWS_SECRET_ACCESS_KEY
