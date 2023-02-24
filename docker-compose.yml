@@ -1,20 +1,12 @@
-version: '3'
+language: generic
+
 services:
-  react:
-    build: 
-      context: .
-      dockerfile: Dockerfile.dev
-    ports:
-      - "3000:3000"
-    volumes:
-      - /user/src/app/node_modules
-      - ./:/user/src/app
-    stdin_open: true
-  tests:
-    build: 
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-    - /user/src/app/node_modules
-    - ./:/user/src/app
-    command: ["npm", "run", "test"]
+  - docker
+
+before_install:
+  - echo "start Creating an image with dockerfile"
+  - docker build -t 0rogyy/docker-react-app -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true 0rogyy/docker-react-app npm run test -- --coverage
+
