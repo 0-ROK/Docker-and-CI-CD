@@ -22,3 +22,4 @@ deploy:
   bucket_path: "docker-react-app"
   on:
     branch: master
+  role: $AWS_ROLE
